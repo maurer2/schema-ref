@@ -1,5 +1,5 @@
 import React from "react";
-import Indicator from "../indicator/indicator";
+import IndicatorWrapper from "../indicator-wrapper/indicator-wrapper";
 
 const IndicatorsLoading = function () {
   return <h1 className="m-0">Loading Indicators</h1>;
@@ -15,7 +15,7 @@ const Indicators = async function () {
   const hasLoaded = await promise;
   console.log(hasLoaded);
 
-  return <Indicator />;
+  return <IndicatorWrapper />;
 };
 
 export default Indicators;

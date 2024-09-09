@@ -3,13 +3,19 @@
 import React, { type MouseEvent } from "react";
 import clsx from "clsx";
 
+import { useIndicatorContext } from "@/app/context/indicator-context/indicator-context";
+
 const Trigger = function () {
+  const { indicatorRef } = useIndicatorContext();
+
   function handleClick(event: MouseEvent<HTMLButtonElement>) {
     console.log(event);
+
+    console.log(indicatorRef)
   }
 
   return (
-    <button type="button" className={clsx("p-0")} onClick={handleClick}>
+    <button type="button" className={clsx("p-2 bg-yellow-700")} onClick={handleClick}>
       Trigger
     </button>
   );
