@@ -36,10 +36,10 @@ const Indicator = forwardRef<RefProp, IndicatorProps>((_, ref) => {
   return (
     <input
       type="text"
-      className={clsx("bg-black p-2", {
-        hasFocus: "outline-dotted outline-pink-500",
+      className={clsx("bg-black p-2 w-full", {
+        "outline-dotted outline-pink-500 outline-offset-2": hasFocus,
       })}
-      value={`Indicator 1 - ${hasFocus.toString()}`}
+      value={`Indicator 1 - ${hasFocus ? "has focus" : "has no focus"}`}
       readOnly
     />
   );
