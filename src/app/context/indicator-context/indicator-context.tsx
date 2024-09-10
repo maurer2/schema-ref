@@ -10,7 +10,11 @@ import {
 } from "react";
 
 type IndicatorContext = {
-  indicatorRef: RefObject<HTMLInputElement>;
+  indicatorRef: {
+    focusComponent: () => void;
+    blurComponent: () => void;
+    test?: () => void;
+  }
 };
 
 const IndicatorContext = createContext<IndicatorContext | null>(null);
@@ -19,14 +23,14 @@ const useIndicatorContext = () => {
   const context = useContext(IndicatorContext);
 
   if (!context) {
-    throw new Error("Indicator context is missing missing");
+    throw new Error("Indicator context is missing");
   }
 
   return context;
 };
 
 const IndicatorContextProvider = ({ children }: PropsWithChildren) => {
-  const indicatorRef = useRef<HTMLInputElement>(null);
+  const indicatorRef = useRef<IndicatorContext['indicatorRef']>(null);
 
   const value = useMemo(
     () => ({
@@ -36,6 +40,7 @@ const IndicatorContextProvider = ({ children }: PropsWithChildren) => {
   );
 
   return (
+    // wrong typings
     <IndicatorContext.Provider value={value}>
       {children}
     </IndicatorContext.Provider>

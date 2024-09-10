@@ -9,13 +9,16 @@ const Trigger = function () {
   const { indicatorRef } = useIndicatorContext();
 
   function handleClick(event: MouseEvent<HTMLButtonElement>) {
-    console.log(event);
-
-    console.log(indicatorRef)
+    event.preventDefault();
+    console.log(indicatorRef.current.test()); // wrong typing
   }
 
   return (
-    <button type="button" className={clsx("p-2 bg-yellow-700")} onClick={handleClick}>
+    <button
+      type="button"
+      className={clsx("p-2 bg-yellow-700")}
+      onClick={handleClick}
+    >
       Trigger
     </button>
   );
