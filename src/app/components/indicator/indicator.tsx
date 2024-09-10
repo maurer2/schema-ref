@@ -5,6 +5,7 @@ import React, {
   useState,
   forwardRef,
   useImperativeHandle,
+  useRef,
   type ReactNode,
 } from "react";
 import clsx from "clsx";
@@ -20,12 +21,15 @@ type IndicatorProps = {
 
 const Indicator = forwardRef<RefProp, IndicatorProps>((_, ref) => {
   const [hasFocus, setHasFocus] = useState(false);
+  const inputElement = useRef<HTMLInputElement>(null);
 
   useImperativeHandle(ref, () => ({
     focusComponent() {
+      inputElement.current?.focus();
       setHasFocus(true);
     },
     blurComponent() {
+      inputElement.current?.blur();
       setHasFocus(false);
     },
     test() {
@@ -36,6 +40,8 @@ const Indicator = forwardRef<RefProp, IndicatorProps>((_, ref) => {
   return (
     <input
       type="text"
+      ref={inputElement}
+      onBlur={() => setHasFocus(false)}
       className={clsx("bg-black p-2 w-full", {
         "outline-dotted outline-pink-500 outline-offset-2": hasFocus,
       })}
