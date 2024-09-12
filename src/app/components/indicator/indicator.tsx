@@ -1,14 +1,7 @@
-/* eslint-disable react/display-name */
-"use client";
+'use client';
 
-import React, {
-  useState,
-  forwardRef,
-  useImperativeHandle,
-  useRef,
-  type ReactNode,
-} from "react";
-import clsx from "clsx";
+import clsx from 'clsx';
+import React, { type ReactNode, forwardRef, useImperativeHandle, useRef, useState } from 'react';
 
 type RefProp = {
   focusComponent: () => void;
@@ -37,12 +30,14 @@ const Indicator = forwardRef<RefProp, IndicatorProps>((_, ref) => {
     <input
       type="text"
       ref={inputElement}
-      onBlur={() => setHasFocus(false)}
+      onBlur={() => {
+        setHasFocus(false);
+      }}
       // onFocus={() => setHasFocus(true)}
-      className={clsx("bg-black p-2 w-full", {
-        "outline-dotted outline-pink-500 outline-offset-2": hasFocus,
+      className={clsx('w-full bg-black p-2', {
+        'outline-dotted outline-offset-2 outline-pink-500': hasFocus,
       })}
-      value={`Indicator 1 - ${hasFocus ? "has focus" : "has no focus"}`}
+      value={`Indicator 1 - ${hasFocus ? 'has focus' : 'has no focus'}`}
       readOnly
     />
   );

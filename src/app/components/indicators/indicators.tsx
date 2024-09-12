@@ -1,11 +1,12 @@
-import React from "react";
-import IndicatorWrapper from "../indicator-wrapper/indicator-wrapper";
+import React from 'react';
 
-const IndicatorsLoading = function () {
+import IndicatorWrapper from '@/app/components/indicator-wrapper/indicator-wrapper';
+
+function IndicatorsLoading() {
   return <h1 className="m-0">Loading Indicators</h1>;
-};
+}
 
-const Indicators = async function () {
+async function Indicators() {
   const { promise, resolve } = Promise.withResolvers<boolean>(); // needs node22
 
   setTimeout(() => {
@@ -16,7 +17,7 @@ const Indicators = async function () {
   console.log(hasLoaded);
 
   return <IndicatorWrapper />;
-};
+}
 
 export default Indicators;
 export { IndicatorsLoading };

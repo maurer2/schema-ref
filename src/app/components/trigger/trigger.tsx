@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { type MouseEvent } from "react";
-import clsx from "clsx";
+import clsx from 'clsx';
+import React, { type MouseEvent } from 'react';
 
-import { useIndicatorContext } from "@/app/context/indicator-context/indicator-context";
+import { useIndicatorContext } from '@/app/context/indicator-context/indicator-context';
 
-const Trigger = function () {
+function Trigger() {
   const { indicatorRef } = useIndicatorContext();
 
   function handleClick(event: MouseEvent<HTMLButtonElement>) {
@@ -14,14 +14,10 @@ const Trigger = function () {
   }
 
   return (
-    <button
-      type="button"
-      className={clsx("p-2 bg-yellow-700")}
-      onClick={handleClick}
-    >
+    <button type="button" className={clsx('bg-yellow-700 p-2')} onClick={handleClick}>
       Trigger
     </button>
   );
-};
+}
 
 export default Trigger;
