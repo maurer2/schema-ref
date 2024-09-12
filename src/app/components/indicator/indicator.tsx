@@ -3,10 +3,9 @@
 import clsx from 'clsx';
 import React, { type ReactNode, forwardRef, useImperativeHandle, useRef, useState } from 'react';
 
-type RefProp = {
-  focusComponent: () => void;
-  blurComponent: () => void;
-};
+import type { IndicatorContextType } from '@/app/context/indicator-context/indicator-context';
+
+type RefProp = IndicatorContextType['indicatorRef']['current'];
 type IndicatorProps = {
   children?: ReactNode;
 };
@@ -24,6 +23,10 @@ const Indicator = forwardRef<RefProp, IndicatorProps>((_, ref) => {
       inputElement.current?.blur();
       setHasFocus(false);
     },
+    scrollIntoView() {
+      inputElement.current?.scrollIntoView({ behavior: 'smooth' });
+      setHasFocus(true);
+    },
   }));
 
   return (
@@ -33,7 +36,9 @@ const Indicator = forwardRef<RefProp, IndicatorProps>((_, ref) => {
       onBlur={() => {
         setHasFocus(false);
       }}
-      // onFocus={() => setHasFocus(true)}
+      onFocus={() => {
+        setHasFocus(true);
+      }}
       className={clsx('w-full bg-black p-2', {
         'outline-dotted outline-offset-2 outline-pink-500': hasFocus,
       })}

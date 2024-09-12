@@ -9,10 +9,11 @@ import {
   useRef,
 } from 'react';
 
-type IndicatorContextType = {
+export type IndicatorContextType = {
   indicatorRef: RefObject<{
     focusComponent: () => void;
     blurComponent: () => void;
+    scrollIntoView: () => void;
   }>;
 };
 

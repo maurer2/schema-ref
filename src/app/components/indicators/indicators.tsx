@@ -3,7 +3,11 @@ import React from 'react';
 import IndicatorWrapper from '@/app/components/indicator-wrapper/indicator-wrapper';
 
 function IndicatorsLoading() {
-  return <h1 className="m-0">Loading Indicators</h1>;
+  return (
+    <div className="bg-black p-2">
+      <div className="animate-pulse">Loading Indicators</div>
+    </div>
+  );
 }
 
 async function Indicators() {

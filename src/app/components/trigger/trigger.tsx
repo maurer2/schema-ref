@@ -1,6 +1,5 @@
 'use client';
 
-import clsx from 'clsx';
 import React, { type MouseEvent } from 'react';
 
 import { useIndicatorContext } from '@/app/context/indicator-context/indicator-context';
@@ -10,12 +9,12 @@ function Trigger() {
 
   function handleClick(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    console.log(indicatorRef.current?.focusComponent());
+    indicatorRef.current?.scrollIntoView();
   }
 
   return (
-    <button type="button" className={clsx('bg-yellow-700 p-2')} onClick={handleClick}>
-      Trigger
+    <button type="button" className="bg-yellow-700 p-2 sticky top-4" onClick={handleClick}>
+      Scroll into view
     </button>
   );
 }
