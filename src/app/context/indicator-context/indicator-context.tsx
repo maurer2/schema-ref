@@ -10,11 +10,10 @@ import {
 } from "react";
 
 type IndicatorContext = {
-  indicatorRef: {
+  indicatorRef: RefObject<{
     focusComponent: () => void;
     blurComponent: () => void;
-    test?: () => void;
-  }
+  }>
 };
 
 const IndicatorContext = createContext<IndicatorContext | null>(null);
@@ -30,7 +29,7 @@ const useIndicatorContext = () => {
 };
 
 const IndicatorContextProvider = ({ children }: PropsWithChildren) => {
-  const indicatorRef = useRef<IndicatorContext['indicatorRef']>(null);
+  const indicatorRef = useRef<IndicatorContext['indicatorRef']['current']>(null);
 
   const value = useMemo(
     () => ({
@@ -40,7 +39,6 @@ const IndicatorContextProvider = ({ children }: PropsWithChildren) => {
   );
 
   return (
-    // wrong typings
     <IndicatorContext.Provider value={value}>
       {children}
     </IndicatorContext.Provider>

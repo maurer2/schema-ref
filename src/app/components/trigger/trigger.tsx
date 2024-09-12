@@ -10,8 +10,7 @@ const Trigger = function () {
 
   function handleClick(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    console.log(indicatorRef?.current?.test()); // wrong typings
-    console.log(indicatorRef?.current?.focusComponent()); // wrong typings
+    console.log(indicatorRef.current?.focusComponent());
   }
 
   return (

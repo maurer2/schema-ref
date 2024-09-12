@@ -13,7 +13,6 @@ import clsx from "clsx";
 type RefProp = {
   focusComponent: () => void;
   blurComponent: () => void;
-  test?: () => void;
 };
 type IndicatorProps = {
   children?: ReactNode;
@@ -32,9 +31,6 @@ const Indicator = forwardRef<RefProp, IndicatorProps>((_, ref) => {
       inputElement.current?.blur();
       setHasFocus(false);
     },
-    test() {
-      console.log("test");
-    },
   }));
 
   return (
@@ -42,6 +38,7 @@ const Indicator = forwardRef<RefProp, IndicatorProps>((_, ref) => {
       type="text"
       ref={inputElement}
       onBlur={() => setHasFocus(false)}
+      // onFocus={() => setHasFocus(true)}
       className={clsx("bg-black p-2 w-full", {
         "outline-dotted outline-pink-500 outline-offset-2": hasFocus,
       })}
